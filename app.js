@@ -22,6 +22,7 @@ function databaseInitialize() {
         User = db.addCollection("users");
         User.insert({username:'admin',password:'admin'});
         User.insert({username:'user',password:'user'});
+        User.insert({username:'Bobmcfluffy',password:'chocolate'})
     }
     if (Item === null) {
         Item = db.addCollection('items');
@@ -67,6 +68,8 @@ function saveFormAndReturnAllItems (form) {
     return allItem;
 }
 
+
+
 // like and sort based on name
 function likeAndSort (itemName, itemValue) {
     var myItem = Item.find({[itemName]:itemValue});
@@ -104,14 +107,20 @@ app.get('/additem', function (request, response) {
 app.post('/login', function (request, response) {
     var loginName = request.body.loginName;
     var password = request.body.password;
-
-    // save login name in session so it's available later
+    if(userPasswordMatch(loginName, password)){
+            // save login name in session so it's available later
     request.session.user = loginName;
 
     //hint: check is password is good or not, if not load same page with error as below
     //response.render('index', {message: "Invalid user name or password"});
 
     response.render('listpage', {items: Item.find()});
+    }
+    else{
+        response.render('index', { message:'The username or password do not match. Please try again'})
+    }
+
+
 
 });
 
@@ -120,9 +129,11 @@ app.post('/login', function (request, response) {
 // when save button is clicked on add page
 app.post('/saveitem', function (request, response) {
 
-    // hint #1: find the helper function that will help save the information first
+   console.log("bookName;"+request.body.bookName);
+
+    // hint #1: find the helper) function that will help save the information first
     // hint #2: make sure to send the list of items to the list page
 
-    response.render('listpage',{ items:[] });
+    response.render('listpage',{ items:saveFormAndReturnAllItems(request.body) });
 });
 

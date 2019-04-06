@@ -4,15 +4,16 @@
 <body>
 <% include ./header %>
 
-<h5><%= message %></h5>
+<h5><span class='red-text'><%= message %></span></h5>
 <div class="card">
 
     <form method="post" action="login">
 
-        User Name: <input type="text" name="loginName"/>
-        Password: <input type="password" name="password"/>
+        User Name: <input type="text" name="loginName" required/>
+        Password: <input type="password" name="password" required/>
 
-        <button class="btn" type="submit" name="submit">Welcome</button>
+        <button class="btn" type="submit" name="submit">Login</button>
+        <button class="btn" type="submit" name="createUser">Create User</button>
 
     </form>
 

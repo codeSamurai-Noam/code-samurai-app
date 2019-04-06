@@ -14,8 +14,17 @@
 
 
         Added by: <input type="text" name="addedBy" value="<%=loginName%>" readonly/>
+        Name of book: <input type="text" name="bookName" maxlength="50" required/>
+        Author: <input type="text" name="author" maxlength="50" required/>
+        Publisher: <input type="text" name="publisher" maxlength="50" required/>
+        Genre: <input type="text" name="genre" maxlength="50" required/>
+        Rating: <input type="number" name="rating" max="10" min="1" required/>
+        URL: <input type="text" name="url" required/>
+
 
         <button class="btn" type="submit" name="submit">Save Item</button>
+
+
 
     </form>
 

@@ -10,12 +10,41 @@
 
     <table class="highlight">
         <tr>
-            <th>Song</th><th>Singer</th><th>Added By</th><th>Likes</th><th>Actions</th>
+            <th>Book</th><th>Author</th><th>Added By</th><th>Publisher</th><th>Genre</th><th>Rating</th><th>Url</th><th>Likes</th><th>Actions</th>
         </tr>
 
         <% items.forEach(function(item){  %>
 
-
+        <tr>
+            <td>
+                <%=item.bookName%>
+            </td>
+            <td>
+                <%=item.author%>
+            </td>
+            <td>
+                <%=item.addedBy%>
+            </td>
+            <td>
+                <%=item.publisher%>
+            </td>
+            <td>
+                <%=item.genre%>
+            </td>
+            <td>
+                <%=item.rating%>
+            </td>
+            <td>
+                <%=item.url%>
+            </td>
+            <td>
+                <i class="material-icons">thumb_up</i>
+                <i class="material-icons">thumb_down</i>
+            </td>
+            <td>
+                <i class="material-icons">delete</i>
+            </td>
+        </tr>
 
 
 
